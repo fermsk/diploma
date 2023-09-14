@@ -24,7 +24,7 @@ kind: Service
 metadata:
   name: serv-nginx
 spec:
-  type: ClusterIP
+  type: NodePort
   selector:
     run: ng-app
   ports:
