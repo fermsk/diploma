@@ -45,7 +45,7 @@
     kube-system    kube-proxy-p4wsf                      1/1     Running   0          3m9s
     kube-system    kube-scheduler-master-node            1/1     Running   0          13m
     femsk@master-node:~$
-## Создание тестового приложения
+## Создание тестового приложения и деплой приложения
 * Директория ./app
 * Образ nginx - docker pull femsk/nginx:1.0
 * Деплой приложение в кластер:
@@ -96,6 +96,13 @@
       </body>
       </html>
 
+## Подготовка cистемы мониторинга
+
+Http доступ к web интерфейсу grafana - http://158.160.98.13:32123/
+![img.png](img.png)
+
+
+## Установка и настройка CI/CD
 
 
 
