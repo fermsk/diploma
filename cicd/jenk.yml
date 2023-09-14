@@ -61,7 +61,7 @@ metadata:
   name: serv-jenk
 subsets:
   - addresses:
-      - ip: 10.244.2.9
-      - ip: 10.244.1.8
+      - ip: 10.244.2.11
+      - ip: 10.244.1.10
     ports:
       - port: 50000
