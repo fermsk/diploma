@@ -98,7 +98,7 @@
 
 ## Подготовка cистемы мониторинга
 
-Http доступ к web интерфейсу grafana - http://158.160.98.13:32123/
+Http доступ к web интерфейсу grafana - http://158.160.98.13:32123/ (admin admin)
 ![img.png](img.png)
 
 
