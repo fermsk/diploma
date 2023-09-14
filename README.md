@@ -104,21 +104,21 @@ Http доступ к web интерфейсу grafana - http://158.160.98.13:321
 
 ## Установка и настройка CI/CD
 * Директория ./cicd
-* Интерфейс ci/cd сервиса доступен по http - http://158.160.98.13:32413/
+  * Интерфейс ci/cd сервиса доступен по http - http://158.160.98.13:32413/
 
+        femsk@master-node:~/kube-prometheus$ kubectl get pods --all-namespaces -owide
+        NAMESPACE      NAME                                   READY   STATUS    RESTARTS   AGE     IP            NODE          NOMINATED NODE   READINESS GATES
+        diploma        jenkins-7855cd94b-8gj9d                1/1     Running   0          63s     10.244.1.11   work-node1    <none>           <none>
+        diploma        jenkins-7855cd94b-xf79q                1/1     Running   0          63s     10.244.2.12   work-node2    <none>           <none>
+        diploma        ng-75967b7d86-p4qkj                    1/1     Running   0          4h35m   10.244.2.2    work-node2    <none>           <none>
+        diploma        ng-75967b7d86-zg58m                    1/1     Running   0          4h35m   10.244.1.2    work-node1    <none>           <none>
+  
+        femsk@master-node:~/kube-prometheus$ kubectl get svc -n diploma
+        NAME             TYPE           CLUSTER-IP       EXTERNAL-IP     PORT(S)          AGE
+        serv-jenk        LoadBalancer   10.111.111.48    158.160.98.13   8081:32413/TCP   83m
+        serv-jenk-jnlp   ClusterIP      10.110.213.184   <none>          50000/TCP        14m
+        serv-nginx       LoadBalancer   10.101.133.147   158.160.98.13   8080:32387/TCP   4h35m
 
-    femsk@master-node:~/kube-prometheus$ kubectl get pods --all-namespaces -owide
-    NAMESPACE      NAME                                   READY   STATUS    RESTARTS   AGE     IP            NODE          NOMINATED NODE   READINESS GATES
-    diploma        jenkins-7855cd94b-8gj9d                1/1     Running   0          63s     10.244.1.11   work-node1    <none>           <none>
-    diploma        jenkins-7855cd94b-xf79q                1/1     Running   0          63s     10.244.2.12   work-node2    <none>           <none>
-    diploma        ng-75967b7d86-p4qkj                    1/1     Running   0          4h35m   10.244.2.2    work-node2    <none>           <none>
-    diploma        ng-75967b7d86-zg58m                    1/1     Running   0          4h35m   10.244.1.2    work-node1    <none>           <none>
-
-    femsk@master-node:~/kube-prometheus$ kubectl get svc -n diploma
-    NAME             TYPE           CLUSTER-IP       EXTERNAL-IP     PORT(S)          AGE
-    serv-jenk        LoadBalancer   10.111.111.48    158.160.98.13   8081:32413/TCP   83m
-    serv-jenk-jnlp   ClusterIP      10.110.213.184   <none>          50000/TCP        14m
-    serv-nginx       LoadBalancer   10.101.133.147   158.160.98.13   8080:32387/TCP   4h35m
 
 ![img_1.png](img_1.png)
 
