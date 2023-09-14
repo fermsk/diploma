@@ -5,4 +5,4 @@
   - name: Deployment
     become_user: femsk
     shell: |
-      kubectl apply -f /app/nginx.yaml -n diploma
+      kubectl apply -f nginx.yaml -n diploma
