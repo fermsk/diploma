@@ -46,6 +46,45 @@
     kube-system    kube-scheduler-master-node            1/1     Running   0          13m
     femsk@master-node:~$
 ## Создание тестового приложения
+* Директория ./app
+* Образ nginx - docker pull femsk/nginx:1.0
+  
+        femsk@master-node:~$ kubectl get pods -n diploma -owide
+        NAME                  READY   STATUS    RESTARTS   AGE   IP           NODE         NOMINATED NODE   READINESS GATES
+        ng-75967b7d86-p4qkj   1/1     Running   0          65m   10.244.2.2   work-node2   <none>           <none>
+        ng-75967b7d86-zg58m   1/1     Running   0          65m   10.244.1.2   work-node1   <none>           <none>
+        
+        femsk@master-node:~$ kubectl get service -n diploma
+        NAME         TYPE           CLUSTER-IP       EXTERNAL-IP     PORT(S)          AGE
+        serv-nginx   LoadBalancer   10.101.133.147   158.160.98.13   8080:32387/TCP   66m
+  * Сервис доступен снаружи:
+  
+        femsk@ubuntu-test-vm:~/diploma/diploma/app$ curl http://158.160.98.13:32387/
+        <!DOCTYPE html>
+        <html>
+        <head>
+        <title>Welcome to nginx!</title>
+        <style>
+        html { color-scheme: light dark; }
+        body { width: 35em; margin: 0 auto;
+        font-family: Tahoma, Verdana, Arial, sans-serif; }
+        </style>
+        </head>
+        <body>
+        <h1>HI!</h1>
+        <p>Here is a page of a test application that emulates the main application developed by our company. .</p>
+        
+        <p>The diploma project materials are located at:
+        <a href="https://github.com/fermsk/diploma">github.com</a>.<br/>
+        
+        <p><em>Thanks!.</em></p>
+        </body>
+        </html>
+
+
+
+
+
 
 
 
