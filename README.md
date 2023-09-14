@@ -72,7 +72,7 @@
         femsk@master-node:~$ kubectl get service -n diploma
         NAME         TYPE           CLUSTER-IP       EXTERNAL-IP     PORT(S)          AGE
         serv-nginx   LoadBalancer   10.101.133.147   158.160.98.13   8080:32387/TCP   66m
-  * Сервис доступен снаружи:
+* Сервис доступен снаружи:
   
         femsk@ubuntu-test-vm:~/diploma/diploma/app$ curl http://158.160.98.13:32387/
         <!DOCTYPE html>
@@ -89,12 +89,12 @@
         <h1>HI!</h1>
         <p>Here is a page of a test application that emulates the main application developed by our company. .</p>
         
-        <p>The diploma project materials are located at:
-        <a href="https://github.com/fermsk/diploma">github.com</a>.<br/>
+      <p>The diploma project materials are located at:
+      <a href="https://github.com/fermsk/diploma">github.com</a>.<br/>
         
-        <p><em>Thanks!.</em></p>
-        </body>
-        </html>
+      <p><em>Thanks!.</em></p>
+      </body>
+      </html>
 
 
 
