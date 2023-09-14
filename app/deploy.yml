@@ -3,5 +3,6 @@
   gather_facts: false
   tasks:
   - name: Deployment
+    become_user: femsk
     command: kubectl create ns diploma
     command: kubectl apply -f nginx.yaml -n diploma
