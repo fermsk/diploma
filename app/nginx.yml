@@ -23,14 +23,17 @@ apiVersion: v1
 kind: Service
 metadata:
   name: serv-nginx
+  namespace: diploma
+  labels:
+      app: ng-app
 spec:
   type: LoadBalancer
-  selector:
-    run: ng-app
+#  selector:
+#    run: ng-app
   ports:
     - protocol: TCP
       port: 8080
-#      targetPort: 80
-#  externalIPs:
-#      - 158.160.98.13
+      targetPort: 80
+  externalIPs:
+      - 158.160.98.13
 
