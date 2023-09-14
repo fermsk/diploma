@@ -24,13 +24,13 @@ kind: Service
 metadata:
   name: serv-nginx
 spec:
-#  type: NodePort
+  type: LoadBalancer
   selector:
     run: ng-app
   ports:
     - protocol: TCP
       port: 8080
-      targetPort: 80
+#      targetPort: 80
 #  externalIPs:
 #      - 158.160.98.13
 
