@@ -41,6 +41,19 @@ spec:
   ports:
     - protocol: TCP
       port: 9001
-      targetPort: 11443
+      targetPort: 1180
   externalIPs:
       - 158.160.98.13
+
+---
+kind: Endpoints
+apiVersion: v1
+metadata:
+  name: serv-jenk
+subsets:
+  - addresses:
+      - ip: 10.244.2.9
+      - ip: 10.244.1.8
+    ports:
+      - port: 1180
+      - port: 11443

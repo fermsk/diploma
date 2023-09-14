@@ -12,7 +12,7 @@
 Поскольку Terraform не доступен в РФ, его не использовал.
 
 ## Создание Kubernetes кластера
-Директория - ./kube
+* Директория - ./kube
 
 #### Настройка мастер ноды:
     femsk@ubuntu-test-vm:~/diploma/diploma/kube$ ssh femsk@$master
@@ -103,7 +103,7 @@ Http доступ к web интерфейсу grafana - http://158.160.98.13:321
 
 
 ## Установка и настройка CI/CD
-
+Директория ./cicd
 
 
 
