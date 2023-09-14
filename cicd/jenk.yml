@@ -18,7 +18,7 @@ spec:
         - name: jenkins
           image: jenkins:2.60.3
           ports:
-            - containerPort: 8081
+            - containerPort: 8080
               name: http-port
             - containerPort: 50000
               name: jnlp
@@ -36,7 +36,7 @@ spec:
   ports:
     - protocol: TCP
       port: 8081
-      targetPort: 8081
+      targetPort: 8080
   externalIPs:
       - 158.160.98.13
 ---
@@ -64,4 +64,4 @@ subsets:
       - ip: 10.244.2.11
       - ip: 10.244.1.10
     ports:
-      - port: 8081
+      - port: 8080
