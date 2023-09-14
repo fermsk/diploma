@@ -2,15 +2,6 @@
   become: yes
   gather_facts: false
   tasks:
-  - name: Create a k8s namespace
-    community.kubernetes.k8s:
-      name: diploma
-      api_version: v1
-      kind: Namespace
-      state: present
-
-  - name: Create a Deployment
-    community.kubernetes.k8s:
-      namespace: diploma
-      state: present
-      src: nginx.yml
+  - name: Deployment
+    command: kubectl create ns diploma
+    command: kubectl apply -f nginx.yaml -n diploma
