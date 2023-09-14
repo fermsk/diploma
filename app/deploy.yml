@@ -1,4 +1,4 @@
-- hosts: master
+- hosts: 158.160.116.209
   become: yes
   gather_facts: false
   tasks:
