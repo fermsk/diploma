@@ -2,7 +2,11 @@
   become: yes
   gather_facts: false
   tasks:
+  - name: Copying yaml
+    copy:
+      src: ./nginx.yml
+      dest: /tmp/nginx.yml
   - name: Deployment
     become_user: femsk
     shell: |
-      kubectl apply -f nginx.yaml -n diploma
+      kubectl apply -f /tmp/nginx.yml -n diploma
