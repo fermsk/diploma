@@ -121,7 +121,7 @@ _________
       serv-nginx       LoadBalancer   10.101.133.147   158.160.98.13   8080:32387/TCP   4h35m
 
 
-![img_1.png](img_1.png)
+![img_2.png](img_2.png)
 
 
 _________
