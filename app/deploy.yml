@@ -4,4 +4,4 @@
   tasks:
   - name: Deployment
     become_user: femsk
-    command: kubectl apply -f nginx.yaml -n diploma
+    command: kubectl apply -f ./nginx.yaml -n diploma
