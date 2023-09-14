@@ -1,8 +1,8 @@
-- hosts: 158.160.116.209
+- hosts: master
   become: yes
   gather_facts: false
   tasks:
   - name: Deployment
     become_user: femsk
     command: kubectl create ns diploma
-    command: kubectl apply -f nginx.yaml -n diploma
+#    command: kubectl apply -f nginx.yaml -n diploma
