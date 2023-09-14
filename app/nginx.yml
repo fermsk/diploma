@@ -28,10 +28,9 @@ spec:
   selector:
     run: ng-app
   ports:
-      protocol: TCP
     - nodePort: 30163
-        port: 8080
-        targetPort: 80
+      port: 8080
+      targetPort: 80
 #  externalIPs:
 #      - 158.160.98.13
 
