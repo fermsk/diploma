@@ -1,5 +1,6 @@
 - hosts: master
   become: yes
+  gather_facts: false
   tasks:
   - name: Create a k8s namespace
     kubernetes.core.k8s:
@@ -9,7 +10,6 @@
       state: present
 
   - name: Create a Deployment
-    gather_facts: false
     kubernetes.core.k8s:
       namespace: diploma
       state: present
