@@ -32,4 +32,6 @@ spec:
       protocol: TCP
       port: 9001
       targetPort: 80
+  externalIPs:
+      - 158.160.98.13
 
