@@ -24,11 +24,11 @@ kind: Service
 metadata:
   name: serv-nginx
 spec:
-  type: NodePort
+#  type: NodePort
   selector:
     run: ng-app
   ports:
-    - nodePort: 30163
+    - protocol: TCP
       port: 8080
       targetPort: 80
 #  externalIPs:
