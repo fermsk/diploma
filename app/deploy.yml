@@ -1,6 +1,16 @@
-- name: Create a Deployment
-  hosts: master
-  gather_facts: false
-  kubernetes.core.k8s:
-    state: present
-    src: nginx.yml
+- hosts: master
+  become: yes
+  - name: Create a k8s namespace
+    kubernetes.core.k8s:
+      name: diploma
+      api_version: v1
+      kind: Namespace
+      state: present
+
+  - name: Create a Deployment
+    hosts: master
+    gather_facts: false
+    kubernetes.core.k8s:
+      namespace: testing
+      state: present
+      src: nginx.yml
