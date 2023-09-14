@@ -8,7 +8,6 @@
       state: present
 
   - name: Create a Deployment
-    hosts: master
     gather_facts: false
     kubernetes.core.k8s:
       namespace: testing
