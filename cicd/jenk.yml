@@ -22,6 +22,12 @@ spec:
               name: http-port
             - containerPort: 50000
               name: jnlp
+          volumeMounts:
+            - name: jenkins-vol
+              mountPath: /var/jenkins_vol
+          volumes:
+            - name: jenkins-vol
+              emptyDir: {}
 
 ---
 apiVersion: v1
