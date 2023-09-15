@@ -1,14 +1,32 @@
-kind: PersistentVolumeClaim
 apiVersion: v1
+kind: PersistentVolume
 metadata:
-  name: jenkins-pvc
+  name: pv-jenk
+  namespace: diploma
+  labels:
+    type: local
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/var/k8s/mnt"
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvс-jenk
   namespace: diploma
 spec:
+  storageClassName: manual
   accessModes:
-  - ReadWriteMany
+    - ReadWriteOnce
   resources:
     requests:
-      storage: 1Gi
+      storage: 300Mi
 
 ---
 apiVersion: apps/v1
@@ -36,7 +54,12 @@ spec:
             - containerPort: 50000
               name: jnlp
           volumeMounts:
-            - name: jenkins-pv
+            - mountPath: /jenkins
+              name: pv-jenk
+      volumes:
+        - name: pv-jenk
+          persistentVolumeClaim:
+            claimName: pvc-jenk
 
 ---
 apiVersion: v1
