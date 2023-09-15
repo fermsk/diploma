@@ -1,17 +1,14 @@
+kind: PersistentVolumeClaim
 apiVersion: v1
-kind: PersistentVolume
 metadata:
-  name: jenkins-pv
+  name: jenkins-pvc
   namespace: diploma
 spec:
-  storageClassName: jenkins-pv
   accessModes:
-    - ReadWriteOnce
-  capacity:
-    storage: 2Gi
-  persistentVolumeReclaimPolicy: Retain
-  hostPath:
-    path: /data/jenkins-volume/
+  - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
 
 ---
 apiVersion: apps/v1
