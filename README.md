@@ -105,7 +105,7 @@ Http доступ к web интерфейсу grafana - http://158.160.98.13:321
 _________
 ## 5. Установка и настройка CI/CD
 * Директория ./cicd
-* Интерфейс ci/cd сервиса доступен по http - http://158.160.98.13:32413/
+* Интерфейс ci/cd сервиса доступен по http - http://158.160.98.13:32413/ (diploma 1Qazxcvb)
 
       femsk@master-node:~/kube-prometheus$ kubectl get pods --all-namespaces -owide
       NAMESPACE      NAME                                   READY   STATUS    RESTARTS   AGE     IP            NODE          NOMINATED NODE   READINESS GATES
