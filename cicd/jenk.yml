@@ -54,7 +54,7 @@ spec:
             - containerPort: 50000
               name: jnlp
           volumeMounts:
-            - mountPath: /jenkins
+            - mountPath: /var/jenkins_home
               name: pv-jenk
       volumes:
         - name: pv-jenk
