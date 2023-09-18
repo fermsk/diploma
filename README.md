@@ -99,6 +99,9 @@ _________
 _________
 ## 4. Подготовка cистемы мониторинга
 
+    femsk@master-node:~$ git clone https://github.com/prometheus-operator/kube-prometheus.git
+    femsk@master-node:~$ kubectl create -f manifests/setup
+
     femsk@master-node:~$ kubectl get svc -nmonitoring
     NAME                    TYPE           CLUSTER-IP       EXTERNAL-IP     PORT(S)                      AGE
     alertmanager-main       ClusterIP      10.101.212.99    <none>          9093/TCP,8080/TCP            3d20h
