@@ -1,7 +1,12 @@
 terraform {
   required_providers {
-   yandex = {
-      source  = "local/hashicorp/yandex"
-      version = ">= 0.98.0"
+    yandex = {
+      source = "local/hashicorp/yandex"
     }
+  }
+  required_version = ">= 0.98"
+}
+
+provider "yandex" {
+  zone = "ru-central1-a"
 }
