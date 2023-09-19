@@ -1,6 +1,6 @@
 terraform {
   required_providers {
-    yandex = {
+    yandex-cloud/yandex = {
       source = "local/hashicorp/yandex"
     }
   }
