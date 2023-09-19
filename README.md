@@ -13,17 +13,26 @@
 _________
 ## 2. Создание Kubernetes кластера
 * Директория - ./kube
+* Установка зависимостей - ansible-playbook -i hosts depend.yml
 
 #### 2.1 Настройка мастер ноды:
+    femsk@ubuntu-test-vm:~/diploma/diploma/kube$ ansible-playbook -i hosts master.yml
+Открывается ssh-сессия на мастер-ноду, и проверяется состояние главного узла кластера:
+
     femsk@ubuntu-test-vm:~/diploma/diploma/kube$ ssh femsk@$master
     Welcome to Ubuntu 20.04.6 LTS (GNU/Linux 5.4.0-162-generic x86_64)
+    
     femsk@master-node:~$ kubectl get nodes
     NAME          STATUS   ROLES           AGE     VERSION
     master-node   Ready    control-plane   4m57s   v1.28.1
 
 #### 2.2 Добавление воркеров в кластер:
+    femsk@ubuntu-test-vm:~/diploma/diploma/kube$ ansible-playbook -i hosts workers.yml
+Открывается ssh-сессия на мастер-ноду, и проверяется состояние кластера:
+
     femsk@ubuntu-test-vm:~/diploma/diploma/kube$ ssh femsk@$master
     Welcome to Ubuntu 20.04.6 LTS (GNU/Linux 5.4.0-162-generic x86_64)
+    
     femsk@master-node:~$ kubectl get nodes
     NAME          STATUS   ROLES           AGE   VERSION
     master-node   Ready    control-plane   11m   v1.28.1
@@ -48,7 +57,23 @@ _________
 _________
 ## 3. Создание тестового приложения и деплой приложения
 * Директория ./app
-* Образ nginx - docker pull femsk/nginx:1.0
+* Приложение создано из базового образа nginx:1.24.0, доработан автоматический запуск nginx, Dockerfile:
+  
+        FROM nginx:1.24.0
+        CMD ["nginx" "-g" "daemon off;"]
+* Сборка Docker образа: 
+
+        docker build -t nginxdip . 
+
+* Назначается tag Docker образу: 
+ 
+        docker tag nginxdip femsk/nginx:1.0
+
+* Docker образ пушится: 
+
+         docker push femsk/nginx:1.0
+
+* Образ nginx - femsk/nginx:1.0
 * Деплой приложение в кластер:
 
         femsk@ubuntu-test-vm:~/diploma/diploma/app$ ansible-playbook -i ../kube/hosts deploy.yml
@@ -69,10 +94,14 @@ _________
         NAME                  READY   STATUS    RESTARTS   AGE   IP           NODE         NOMINATED NODE   READINESS GATES
         ng-75967b7d86-p4qkj   1/1     Running   0          65m   10.244.2.2   work-node2   <none>           <none>
         ng-75967b7d86-zg58m   1/1     Running   0          65m   10.244.1.2   work-node1   <none>           <none>
+
+* Для доступа к приложению "снаружи" используется тип сервиса LoadBalancer — стандартный способ предоставления сервиса в интернет.
         
         femsk@master-node:~$ kubectl get service -n diploma
         NAME         TYPE           CLUSTER-IP       EXTERNAL-IP     PORT(S)          AGE
         serv-nginx   LoadBalancer   10.101.133.147   158.160.98.13   8080:32387/TCP   66m
+* Использование Endpoints обусловлено тем, что они обеспечивают связь между различными службами внутри кластера в
+  условиях сложных рабочих процессов. 
 * Сервис доступен снаружи: http://158.160.98.13:32387/
   
         femsk@ubuntu-test-vm:~/diploma/diploma/app$ curl http://158.160.98.13:32387/
@@ -122,6 +151,11 @@ Http доступ к web интерфейсу grafana - http://158.160.98.13:321
 _________
 ## 5. Установка и настройка CI/CD
 * Директория ./cicd
+* Деплой Jenkins в кластер - 
+ 
+      ansible-playbook -i ../kube/hosts deploy_j.yml
+ 
+* Конфигурация монтируется в путь /var/jenkins_home из PVC/ 
 * Интерфейс ci/cd сервиса доступен по http - http://158.160.98.13:32413/ (diploma 1Qazxcvb)
 
       femsk@master-node:~/kube-prometheus$ kubectl get pods --all-namespaces -owide
