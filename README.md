@@ -9,7 +9,18 @@
 
 ## Этапы выполнения:
 ## 1. Создание облачной инфраструктуры
-Поскольку Terraform не доступен в РФ, его не использовал.
+* Директория ./terraform-deprecated
+#### 1.1 Сборка terraform-provider-yandex:
+    git clone https://github.com/yandex-cloud/terraform-provider-yandex.git
+    make build
+#### 1.2  Используйте один workspace, назвав его stage
+
+    femsk@ubuntu-test-vm:~/diploma/diploma/terraform-deprecated$ terraform workspace new stage
+    Created and switched to workspace "stage"!
+
+
+    
+
 _________
 ## 2. Создание Kubernetes кластера
 * Директория - ./kube
