@@ -1,11 +1,10 @@
 terraform {
-#   required_providers {
-#     yandex = {
-#       source = "yandex-cloud/yandex"
-#     }
-#   }
-  required_version = ">= 0.13"
-}
+  required_providers {
+   yandex = {
+      source  = "local/hashicorp/yandex"
+      version = ">= 0.98.0"
+    }
+  }
 
 provider "yandex" {
   zone = "ru-central1-a"
