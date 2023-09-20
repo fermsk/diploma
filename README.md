@@ -214,7 +214,8 @@ _________
       #ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
       ExecStart=/usr/bin/dockerd -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock -H fd:// --containerd=/run/containerd/containerd.sock
 * Настройка Jenkins job - http://158.160.98.13:32413/job/diploma/configure
-* Настройка  GitHub hook  
+* Настройка  GitHub Webhooks
+![img_5.png](img_5.png)
 * При любом коммите в репозиторий с тестовым приложением происходит сборка и отправка в регистр Docker образа.
 ![img_4.png](img_4.png)
 _________
