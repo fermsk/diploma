@@ -18,7 +18,7 @@
     femsk@ubuntu-test-vm:~/diploma/diploma/terraform-deprecated$ terraform workspace new stage
     Created and switched to workspace "stage"!
 
-#### 1.3 Конфигурация создана ./main.tf, успешно прошла проверку:
+#### 1.3 Конфигурация создана ./main.tf, успешно прошёл проверку:
 
     femsk@ubuntu-test-vm:~/diploma/diploma/terraform-deprecated$ terraform validate
     Success! The configuration is valid.

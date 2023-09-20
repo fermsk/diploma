@@ -7,11 +7,11 @@ terraform {
   required_version = ">= 0.98"
 }
 
-provider "yandex" {
-  zone = "ru-central1-a"
-}
+# provider "yandex" {
+#   zone = "ru-central1-a"
+# }
 resource "yandex_compute_instance" "vm-1" {
-  name = "mater-node"
+  name = "node1"
 
   resources {
     cores  = 2
@@ -27,11 +27,14 @@ resource "yandex_compute_instance" "vm-1" {
   network_interface {
     subnet_id = yandex_vpc_subnet.subnet-1.id
     nat       = true
+  }
+metadata = {
+    ssh-keys = "ubuntu:${file("~/.ssh/id_rsa.pub")}"
   }
 }
 
 resource "yandex_compute_instance" "vm-2" {
-  name = "work-node1"
+  name = "node2"
 
   resources {
     cores  = 2
@@ -47,11 +50,14 @@ resource "yandex_compute_instance" "vm-2" {
   network_interface {
     subnet_id = yandex_vpc_subnet.subnet-1.id
     nat       = true
+  }
+metadata = {
+    ssh-keys = "ubuntu:${file("~/.ssh/id_rsa.pub")}"
   }
 }
 
 resource "yandex_compute_instance" "vm-3" {
-  name = "work-node3"
+  name = "node3"
 
   resources {
     cores  = 2
@@ -67,6 +73,9 @@ resource "yandex_compute_instance" "vm-3" {
   network_interface {
     subnet_id = yandex_vpc_subnet.subnet-1.id
     nat       = true
+  }
+metadata = {
+    ssh-keys = "ubuntu:${file("~/.ssh/id_rsa.pub")}"
   }
 }
 
