@@ -1,1 +1,2 @@
-FROM femsk/nginx:1.0
+#тестовое приложение nginx
+FROM femsk/nginx:latest

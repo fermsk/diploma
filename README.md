@@ -209,13 +209,13 @@ _________
 
 ![img_2.png](img_2.png)
 
-* Настройка Cloud Docker в jenkins, изменения в настройки докера в systemd:
+* Настройка Cloud Docker в jenkins, изменения в настройки докера в systemd на master-node:
 
       #ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
       ExecStart=/usr/bin/dockerd -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock -H fd:// --containerd=/run/containerd/containerd.sock
 * Настройка Jenkins job - http://158.160.98.13:32413/job/diploma/configure
 * При любом коммите в репозиторий с тестовым приложением происходит сборка и отправка в регистр Docker образа.
-
+![img_4.png](img_4.png)
 _________
 
 
