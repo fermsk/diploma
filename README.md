@@ -47,8 +47,9 @@
 _________
 ## 2. Создание Kubernetes кластера
 * Директория - ./kube
-* Установка зависимостей - ansible-playbook -i hosts depend.yml
 * Подготовка 3-x ВМ для создания кластера - terraform apply
+* Установка зависимостей - ansible-playbook -i hosts depend.yml
+
 
 #### 2.1 Настройка мастер ноды:
     femsk@ubuntu-test-vm:~/diploma/diploma/kube$ ansible-playbook -i hosts master.yml
