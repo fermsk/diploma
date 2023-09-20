@@ -7,9 +7,9 @@ terraform {
   required_version = ">= 0.98"
 }
 
-# provider "yandex" {
-#   zone = "ru-central1-a"
-# }
+provider "yandex" {
+  zone = "ru-central1-a"
+}
 resource "yandex_compute_instance" "vm-1" {
   name = "node1"
 
