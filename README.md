@@ -190,7 +190,7 @@ _________
  
       ansible-playbook -i ../kube/hosts deploy_j.yml
  
-* Конфигурация монтируется в путь /var/jenkins_home из PVC/ 
+* Конфигурация монтируется в путь /var/jenkins_home из PVC
 * Интерфейс ci/cd сервиса доступен по http - http://158.160.98.13:32413/ (diploma 1Qazxcvb)
 
       femsk@master-node:~/kube-prometheus$ kubectl get pods --all-namespaces -owide
@@ -209,7 +209,7 @@ _________
 
 ![img_2.png](img_2.png)
 
-* При любом коммите в репозиторие с тестовым приложением происходит сборка и отправка в регистр Docker образа.
+* При любом коммите в репозиторий с тестовым приложением происходит сборка и отправка в регистр Docker образа.
 
 ![img_3.png](img_3.png)
 
