@@ -11,7 +11,7 @@ provider "yandex" {
   zone = "ru-central1-a"
 }
 resource "yandex_compute_instance" "vm-1" {
-  name = "node1"
+  name = "mater-node"
 
   resources {
     cores  = 2
@@ -34,7 +34,7 @@ metadata = {
 }
 
 resource "yandex_compute_instance" "vm-2" {
-  name = "node2"
+  name = "work-node1"
 
   resources {
     cores  = 2
@@ -57,7 +57,7 @@ metadata = {
 }
 
 resource "yandex_compute_instance" "vm-3" {
-  name = "node3"
+  name = "work-node2"
 
   resources {
     cores  = 2
@@ -87,7 +87,7 @@ resource "yandex_vpc_subnet" "subnet-1" {
   name           = "subnet1"
   zone           = "ru-central1-a"
   network_id     = yandex_vpc_network.network-1.id
-  v4_cidr_blocks = ["192.168.10.0/24"]
+  v4_cidr_blocks = ["10.128.0.0/24"]
 }
 
 output "internal_ip_address_vm_1" {

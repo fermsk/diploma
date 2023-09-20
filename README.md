@@ -13,7 +13,7 @@
 #### 1.1 Сборка terraform-provider-yandex:
     git clone https://github.com/yandex-cloud/terraform-provider-yandex.git
     make build
-#### 1.2  Используйте один workspace, назвав его stage
+#### 1.2 Используйте один workspace, назвав его stage
 
     femsk@ubuntu-test-vm:~/diploma/diploma/terraform-deprecated$ terraform workspace new stage
     Created and switched to workspace "stage"!
@@ -22,14 +22,33 @@
 
     femsk@ubuntu-test-vm:~/diploma/diploma/terraform-deprecated$ terraform validate
     Success! The configuration is valid.
+#### 1.4 Добавление переменных окружения
 
+    export YC_TOKEN=$(yc iam create-token)
+    export YC_CLOUD_ID=$(yc config get cloud-id)
+    export YC_FOLDER_ID=$(yc config get folder-id)
+#### 1.5 Команда terraform plan выводит список ресурсов с их параметрами:
 
+    femsk@ubuntu-test-vm:~/diploma/diploma/terraform-deprecated$ terraform plan
+    
+    Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+    + create
+    ...
+#### 1.6 Команда terraform apply создаёт ресурсы (3 ВМ сеть и подсеть):
 
+    femsk@ubuntu-test-vm:~/diploma/diploma/terraform-deprecated$ terraform apply
+    ...
+    Apply complete! Resources: 5 added, 0 changed, 0 destroyed.
+#### 1.7 Команда terraform destroy удаляет все созданные ресурсы описанные в  backend для Terraform (./main.tf):
 
+    femsk@ubuntu-test-vm:~/diploma/diploma/terraform-deprecated$ terraform destroy
+    ...
+    Destroy complete! Resources: 5 destroyed.
 _________
 ## 2. Создание Kubernetes кластера
 * Директория - ./kube
 * Установка зависимостей - ansible-playbook -i hosts depend.yml
+* Подготовка 3-x ВМ для создания кластера - terraform apply
 
 #### 2.1 Настройка мастер ноды:
     femsk@ubuntu-test-vm:~/diploma/diploma/kube$ ansible-playbook -i hosts master.yml
