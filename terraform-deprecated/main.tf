@@ -16,12 +16,12 @@ resource "yandex_compute_instance" "vm-1" {
   resources {
     cores  = 2
     memory = 2
-    diskSizeGB: 30
   }
 
   boot_disk {
     initialize_params {
       image_id = "fd8d8etig5vu92nh75bm"
+      size = 30
     }
   }
 
@@ -40,12 +40,12 @@ resource "yandex_compute_instance" "vm-2" {
   resources {
     cores  = 2
     memory = 2
-    diskSizeGB: 30
   }
 
   boot_disk {
     initialize_params {
       image_id = "fd8d8etig5vu92nh75bm"
+      size = 20
     }
   }
 
@@ -64,12 +64,12 @@ resource "yandex_compute_instance" "vm-3" {
   resources {
     cores  = 2
     memory = 2
-    diskSizeGB: 30
   }
 
   boot_disk {
     initialize_params {
       image_id = "fd8d8etig5vu92nh75bm"
+      size = 20
     }
   }
 
