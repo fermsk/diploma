@@ -44,6 +44,9 @@
     femsk@ubuntu-test-vm:~/diploma/diploma/terraform-deprecated$ terraform destroy
     ...
     Destroy complete! Resources: 5 destroyed.
+
+#### 1.8
+terraform output > 12
 _________
 ## 2. Создание Kubernetes кластера
 * Директория - ./kube
