@@ -2,10 +2,6 @@
   become: yes
   gather_facts: false
   tasks:
-  - name: Copying yaml
-    copy:
-      src: ./jenk.yml
-      dest: /tmp/jenk.yml
   - name: Deployment
     become_user: femsk
     shell: |
