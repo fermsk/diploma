@@ -11,11 +11,12 @@ provider "yandex" {
   zone = "ru-central1-a"
 }
 resource "yandex_compute_instance" "vm-1" {
-  name = "mater-node"
+  name = "master-node"
 
   resources {
     cores  = 2
     memory = 2
+    diskSizeGB: 30
   }
 
   boot_disk {
@@ -39,6 +40,7 @@ resource "yandex_compute_instance" "vm-2" {
   resources {
     cores  = 2
     memory = 2
+    diskSizeGB: 30
   }
 
   boot_disk {
@@ -62,6 +64,7 @@ resource "yandex_compute_instance" "vm-3" {
   resources {
     cores  = 2
     memory = 2
+    diskSizeGB: 30
   }
 
   boot_disk {
