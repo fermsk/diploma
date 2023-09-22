@@ -15,10 +15,10 @@
         state: directory
         mode: 0755
 
-    - name: copy admin.conf to user's kube config
+    - name: copy admin.conf to user's kube config.t
       copy:
         src: /etc/kubernetes/admin.conf
-        dest: /home/femsk/.kube/config
+        dest: /home/femsk/.kube/config.t
         remote_src: yes
         owner: femsk
 
