@@ -64,7 +64,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: jenkins_agent
+  name: jenkinsagent
 spec:
   replicas: 1
   strategy:
@@ -78,7 +78,7 @@ spec:
         app: jenkag-app
     spec:
       containers:
-        - name: jenkins_agent
+        - name: jenkinsagent
           image: femsk/diploma:1.1
           ports:
             - containerPort: 8080
