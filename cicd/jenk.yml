@@ -98,6 +98,6 @@ metadata:
   name: serv-jenk
 subsets:
   - addresses:
-      - ip: 10.244.1.13
+      - ip: 10.244.2.37
     ports:
       - port: 8080
