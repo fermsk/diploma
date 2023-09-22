@@ -18,7 +18,7 @@
     - name: copy admin.conf to user's kube config.t
       copy:
         src: /etc/kubernetes/admin.conf
-        dest: /home/femsk/.kube/config.t
+        dest: /home/femsk/.kube/config
         remote_src: yes
         owner: femsk
 
