@@ -1,5 +1,5 @@
 [masters]
-master ansible_host=158.160.116.209 ansible_user=femsk
+master ansible_host=158.160.119.154 ansible_user=femsk
 
 [workers]
 worker1 ansible_host=158.160.98.13 ansible_user=femsk
