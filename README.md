@@ -163,8 +163,7 @@ _________
       </html>
 _________
 ## 4. Подготовка cистемы мониторинга
-
-    femsk@master-node:~$ git clone https://github.com/prometheus-operator/kube-prometheus.git
+* Добавлен сабмодуль https://github.com/prometheus-operator/kube-prometheus.git, директория ./kube-prometheus
     femsk@master-node:~$ kubectl create -f manifests/setup
 
     femsk@master-node:~$ kubectl get svc -nmonitoring
