@@ -80,12 +80,6 @@ spec:
       containers:
         - name: jenkinsagent
           image: femsk/diploma:1.1
-          ports:
-            - containerPort: 8080
-              name: http-port
-            - containerPort: 50000
-              name: jnlp
-
 ---
 apiVersion: v1
 kind: Service
