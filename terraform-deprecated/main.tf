@@ -130,3 +130,10 @@ resource "yandex_vpc_subnet" "subnet-1" {
 # output "external_ip_address_vm_3" {
 #   value = yandex_compute_instance.vm-3.network_interface.0.nat_ip_address
 # }
+resource "local_file" "inventory" {
+  filename = "./host.ini"
+  content     = <<_EOF
+    [master]
+    ${yandex_compute_instance.vm-1.network_interface.0.nat_ip_address}
+    EOF
+}
