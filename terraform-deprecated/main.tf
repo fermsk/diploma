@@ -4,7 +4,7 @@ terraform {
       source = "local/hashicorp/yandex"
     }
   }
-  required_version = ">= 0.98"
+  required_version = ">= 0.12"
 }
 
 provider "yandex" {
