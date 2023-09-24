@@ -149,7 +149,7 @@ _________
         ng-75967b7d86-zg58m   1/1     Running   0          65m   10.244.1.2   work-node1   <none>           <none>
 
 * Для доступа к приложению "снаружи" используется тип сервиса LoadBalancer — стандартный способ предоставления сервиса в интернет.
-* Деплой сервиса - https://github.com/fermsk/diploma/blob/main/app/nginx.yml#L22       
+* Описание объекта Kubernetes - https://github.com/fermsk/diploma/blob/main/app/nginx.yml#L22       
 ```        
 femsk@master-node:~$ kubectl get service -n diploma
 NAME         TYPE           CLUSTER-IP       EXTERNAL-IP     PORT(S)          AGE

@@ -5,4 +5,7 @@
   - name: Deployment
     become_user: femsk
     shell: |
+      git clone --recurse-submodules https://github.com/fermsk/diploma.git
+      cd diploma/kube-prometheus
       kubectl create -f manifests/setup
+      kubectl apply -f ../monitor/grafana-service.yaml
