@@ -47,7 +47,7 @@ spec:
     spec:
       containers:
         - name: jenkins
-          image: jenkins/jenkins
+          image: femsk/diploma:1.1
           ports:
             - containerPort: 8080
               name: http-port
@@ -75,7 +75,7 @@ spec:
       port: 8081
       targetPort: 8080
   externalIPs:
-      - 158.160.98.13
+      - 158.160.111.8
 ---
 apiVersion: v1
 kind: Service
