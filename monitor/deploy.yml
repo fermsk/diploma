@@ -8,4 +8,5 @@
       git clone --recurse-submodules https://github.com/fermsk/diploma.git
       cd diploma/kube-prometheus
       kubectl create -f manifests/setup
+      kubectl create -f manifests
       kubectl apply -f ../monitor/grafana-service.yaml

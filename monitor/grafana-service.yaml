@@ -15,7 +15,7 @@ spec:
     port: 3000
     targetPort: http
   externalIPs:
-    - 158.160.98.13
+    - 158.160.111.8
   selector:
     app.kubernetes.io/component: grafana
     app.kubernetes.io/name: grafana
