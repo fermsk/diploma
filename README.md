@@ -188,7 +188,7 @@ _________
 ```
 femsk@ubuntu-test-vm:~/diploma/diploma/terraform-deprecated$ ansible-playbook --inventory-file=./terraform-inventory ../monitor/deploy.yml
 ```
-Http доступ к web интерфейсу grafana - http://158.160.111.8:30271 (admin admin)
+Http доступ к web интерфейсу grafana - [Grafana](http://158.160.111.8:30271) (admin admin)
 ![img.png](img.png)
 
 _________
