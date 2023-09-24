@@ -149,10 +149,12 @@ _________
         ng-75967b7d86-zg58m   1/1     Running   0          65m   10.244.1.2   work-node1   <none>           <none>
 
 * Для доступа к приложению "снаружи" используется тип сервиса LoadBalancer — стандартный способ предоставления сервиса в интернет.
-        
-        femsk@master-node:~$ kubectl get service -n diploma
-        NAME         TYPE           CLUSTER-IP       EXTERNAL-IP     PORT(S)          AGE
-        serv-nginx   LoadBalancer   10.101.133.147   158.160.98.13   8080:32387/TCP   66m
+* Деплой сервиса - https://github.com/fermsk/diploma/blob/main/app/nginx.yml#L22       
+```        
+femsk@master-node:~$ kubectl get service -n diploma
+NAME         TYPE           CLUSTER-IP       EXTERNAL-IP     PORT(S)          AGE
+serv-nginx   LoadBalancer   10.101.133.147   158.160.98.13   8080:32387/TCP   66m
+```
 * Использование Endpoints обусловлено тем, что они обеспечивают связь между различными службами внутри кластера в
   условиях сложных рабочих процессов. 
 * Сервис доступен снаружи: http://158.160.98.13:32387/
