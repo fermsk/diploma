@@ -45,8 +45,9 @@
     ...
     Destroy complete! Resources: 5 destroyed.
 ### Доработка 
-#### 1.8 Для генерации файла инвентаризации ansible, используется утилита terraform-inventory. Команда terraform apply выгладит следующим образом:
+#### 1.8 Для генерации файла инвентаризации ansible используется утилита terraform-inventory. Команда ansible-playbook: 
 
+    ansible-playbook --inventory-file=./terraform-inventory
 _________
 ## 2. Создание Kubernetes кластера
 * Директория - ./kube
