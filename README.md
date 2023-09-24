@@ -65,7 +65,7 @@ femsk@ubuntu-test-vm:~/diploma/diploma/terraform-deprecated$ ansible-playbook --
 ```
 #### 2.1 Настройка мастер ноды:
 ```
-femsk@ubuntu-test-vm:~/diploma/diploma/terraform-deprecated$ ansible-playbook --inventory ../kube/master.yml
+femsk@ubuntu-test-vm:~/diploma/diploma/terraform-deprecated$ ansible-playbook --inventory-file=./terraform-inventory ../kube/master.yml
 ```
 Открывается ssh-сессия на мастер-ноду, и проверяется состояние главного узла кластера:
 ```
@@ -182,24 +182,13 @@ serv-nginx   LoadBalancer   10.101.133.147   158.160.98.13   8080:32387/TCP   66
       </html>
 _________
 ## 4. Подготовка cистемы мониторинга
+* Директория ./monitor
 * Добавлен сабмодуль https://github.com/prometheus-operator/kube-prometheus.git, директория ./kube-prometheus
-    femsk@master-node:~$ kubectl create -f manifests/setup
-
-    femsk@master-node:~$ kubectl get svc -nmonitoring
-    NAME                    TYPE           CLUSTER-IP       EXTERNAL-IP     PORT(S)                      AGE
-    alertmanager-main       ClusterIP      10.101.212.99    <none>          9093/TCP,8080/TCP            3d20h
-    alertmanager-operated   ClusterIP      None             <none>          9093/TCP,9094/TCP,9094/UDP   3d20h
-    blackbox-exporter       ClusterIP      10.102.202.135   <none>          9115/TCP,19115/TCP           3d20h
-    grafana                 LoadBalancer   10.97.219.72     158.160.98.13   3000:32123/TCP               3d20h
-    kube-state-metrics      ClusterIP      None             <none>          8443/TCP,9443/TCP            3d20h
-    node-exporter           ClusterIP      None             <none>          9100/TCP                     3d20h
-    prometheus-adapter      ClusterIP      10.107.252.104   <none>          443/TCP                      3d20h
-    prometheus-k8s          ClusterIP      10.110.15.108    <none>          9090/TCP,8080/TCP            3d20h
-    prometheus-operated     ClusterIP      None             <none>          9090/TCP                     3d20h
-    prometheus-operator     ClusterIP      None             <none>          8443/TCP                     3d20h
-
-
-Http доступ к web интерфейсу grafana - http://158.160.98.13:32123/ (admin admin)
+* Деплой:
+```
+femsk@ubuntu-test-vm:~/diploma/diploma/terraform-deprecated$ ansible-playbook --inventory-file=./terraform-inventory ../monitor/deploy.yml
+```
+Http доступ к web интерфейсу grafana - http://158.160.111.8:30271// (admin admin)
 ![img.png](img.png)
 
 _________
