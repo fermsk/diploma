@@ -10,8 +10,8 @@ terraform {
 provider "yandex" {
   zone = "ru-central1-a"
 }
-resource "yandex_compute_instance" "vm-1" {
-  name = "node"
+resource "yandex_compute_instance" "master" {
+  name = "vm1"
 
   resources {
     cores  = 2

@@ -44,9 +44,9 @@
     femsk@ubuntu-test-vm:~/diploma/diploma/terraform-deprecated$ terraform destroy
     ...
     Destroy complete! Resources: 5 destroyed.
+### Доработка 
+#### 1.8 Для генерации файла инвентаризации ansible, используется утилита terraform-inventory. Команда terraform apply выгладит следующим образом:
 
-#### 1.8
-terraform output > 12
 _________
 ## 2. Создание Kubernetes кластера
 * Директория - ./kube
