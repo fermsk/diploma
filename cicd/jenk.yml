@@ -40,14 +40,10 @@ spec:
   selector:
     matchLabels:
       app: jenk-app
-  template:
-    metadata:
-      labels:
-        app: jenk-app
     spec:
       containers:
         - name: jenkins
-          image: jenkins/jenkins
+          image: femsk/diploma:1.1
           ports:
             - containerPort: 8080
               name: http-port
