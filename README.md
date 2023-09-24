@@ -38,17 +38,17 @@ Terraform used the selected providers to generate the following execution plan. 
 + create
 ...
 ```
-#### 1.6 Команда terraform apply создаёт ресурсы (3 ВМ сеть и подсеть):
+#### 1.6 Команда terraform apply создаёт ресурсы (3 ВМ сеть и 3 подсети):
 ```
 femsk@ubuntu-test-vm:~/diploma/diploma/terraform-deprecated$ terraform apply
 ...
-Apply complete! Resources: 5 added, 0 changed, 0 destroyed.
+Apply complete! Resources: 7 added, 0 changed, 0 destroyed.
 ```
 #### 1.7 Команда terraform destroy удаляет все созданные ресурсы описанные в  backend для Terraform (./main.tf):
 ```
 femsk@ubuntu-test-vm:~/diploma/diploma/terraform-deprecated$ terraform destroy
 ...
-Destroy complete! Resources: 5 destroyed.
+Destroy complete! Resources: 7 destroyed.
 ``` 
 ### Доработка 
 #### 1.8 Для генерации файла инвентаризации ansible используется утилита terraform-inventory. Команда ansible-playbook: 
