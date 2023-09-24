@@ -10,3 +10,4 @@
       kubectl create -f manifests/setup
       kubectl create -f manifests
       kubectl apply -f ../monitor/grafana-service.yaml
+      rm -rf ../../diploma
