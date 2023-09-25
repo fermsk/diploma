@@ -42,9 +42,10 @@ spec:
     metadata:
       labels:
         run: jenk-app
-  securityContext:
-    fsGroup: 1000
-    runAsUser: 0
+    spec:
+      securityContext:
+        fsGroup: 1000
+        runAsUser: 0
     spec:
       containers:
         - name: jenkins
