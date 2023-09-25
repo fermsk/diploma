@@ -55,13 +55,13 @@ spec:
               name: http-port
             - containerPort: 50000
               name: jnlp
-          volumeMounts:
-            - mountPath: /var/jenkins_home
-              name: pv-jenk
-      volumes:
-        - name: pv-jenk
-          persistentVolumeClaim:
-            claimName: jenkvol
+#          volumeMounts:
+#            - mountPath: /var/jenkins_home
+#              name: pv-jenk
+#      volumes:
+#        - name: pv-jenk
+#          persistentVolumeClaim:
+#            claimName: jenkvol
 ---
 apiVersion: v1
 kind: Service
