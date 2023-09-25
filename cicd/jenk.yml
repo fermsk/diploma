@@ -4,7 +4,32 @@ metadata:
   name: local-storage
 provisioner: kubernetes.io/no-provisioner
 volumeBindingMode: WaitForFirstConsumer
-
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: jenkins-pv-volume
+  labels:
+    type: local
+spec:
+  storageClassName: local-storage
+  claimRef:
+    name: jenkins-pv-claim
+    namespace: diploma
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  local:
+    path: /var/k8s/mnt
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - master-node
 #apiVersion: v1
 #kind: PersistentVolume
 #metadata:
