@@ -4,6 +4,6 @@ master ansible_host=158.160.33.162 ansible_user=femsk
 [workers]
 worker1 ansible_host=158.160.96.234 ansible_user=femsk
 worker2 ansible_host=158.160.111.8 ansible_user=femsk
-
+worker3 ansible_host=158.160.50.189 ansible_user=femsk
 [all:vars]
 ansible_python_interpreter=/usr/bin/python3
