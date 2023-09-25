@@ -188,7 +188,7 @@ femsk@ubuntu-test-vm:~/diploma/diploma/terraform-deprecated$ ansible-playbook --
 ![img.png](img.png)
 
 _________
-## 5. Установка и настройка CI/CD
+## 5. Установка и настройка CI/CD 
 * Директория ./cicd
 * Деплой Jenkins в кластер - 
 ``` 
