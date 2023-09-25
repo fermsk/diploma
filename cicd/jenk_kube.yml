@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jenkins-kube
+  namespace: diploma
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jenkins-kube
+  template:
+    metadata:
+      labels:
+        app: jenkins-kube
+    spec:
+      containers:
+      - name: jenkins-kube
+        image: skogie/jenkins-kubectl
+        ports:
+          - name: http-port
+            containerPort: 8081
+          - name: jnlp-port
+            containerPort: 50001
+        volumeMounts:
+          - name: jenkins-vol1
+            mountPath: /var/jenkins_vol1
+      volumes:
+        - name: jenkins-vol1
+          emptyDir: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: jenkins-kube
+spec:
+  type: NodePort
+  ports:
+    - port: 8081
+      targetPort: 8081
+      nodePort: 30001
+  selector:
+    app: jenkins-kube

@@ -196,7 +196,7 @@ femsk@ubuntu-test-vm:~/diploma/diploma/terraform-deprecated$ ansible-playbook --
 ``` 
 * Конфигурация монтируется в путь /var/jenkins_home из PVC
 * Интерфейс ci/cd сервиса доступен по http - [Jenkins](http://158.160.111.8:30000) (diploma 1Qazxcvb)
-* Сервис для доступа к сервису "снаружи" - 
+* Сервис для доступа к сервису "снаружи" - [Jenkins Service](https://github.com/fermsk/diploma/blob/main/cicd/jenk.yml#L31)
 
 
 ![img_2.png](img_2.png)
