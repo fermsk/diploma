@@ -178,7 +178,7 @@ serv-nginx   LoadBalancer   10.101.133.147   158.160.98.13   8080:32387/TCP   66
       </html>
 _________
 ## 4. Подготовка cистемы мониторинга
-* Директория ./monitor
+* Директория ./monitor 
 * Добавлен сабмодуль https://github.com/prometheus-operator/kube-prometheus.git, директория ./kube-prometheus
 * Деплой: 
 ```
