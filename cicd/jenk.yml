@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: jenkins
-        image: femsk/diploma:1.1
+        image: jenkins/jenkins
         ports:
           - name: http-port
             containerPort: 8080
@@ -40,6 +40,8 @@ spec:
       nodePort: 30000
   selector:
     app: jenkins
+  externalIPs:
+    - 158.160.111.8
 
 
 #---
