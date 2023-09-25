@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: jenkins-kube
-        image: skogie/jenkins-kubectl
+        image: femsk/diploma:1.0
         ports:
           - name: http-port
             containerPort: 8081
@@ -40,3 +40,5 @@ spec:
       nodePort: 30001
   selector:
     app: jenkins-kube
+  externalIPs:
+    - 158.160.111.8
