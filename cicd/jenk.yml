@@ -1,33 +1,3 @@
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRole
-metadata:
-  name: jenkins-admin
-rules:
-  - apiGroups: [""]
-    resources: ["*"]
-    verbs: ["*"]
-
----
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: jenkins-admin
-  namespace: diploma
-
----
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRoleBinding
-metadata:
-  name: jenkins-admin
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: jenkins-admin
-subjects:
-- kind: ServiceAccount
-  name: jenkins-admin
-  namespace: diploma
-
 ---
 kind: StorageClass
 apiVersion: storage.k8s.io/v1
@@ -53,14 +23,6 @@ spec:
     - ReadWriteOnce
   local:
     path: /var/k8s/mnt
-  nodeAffinity:
-    required:
-      nodeSelectorTerms:
-      - matchExpressions:
-        - key: kubernetes.io/hostname
-          operator: In
-          values:
-          - master-node
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -93,10 +55,9 @@ spec:
       securityContext:
             fsGroup: 1000
             runAsUser: 1000
-      serviceAccountName: jenkins-admin
       containers:
         - name: jenkins
-          image: femsk/diploma:1.1
+          image: jenkins/jenkins
           ports:
             - name: httpport
               containerPort: 8080
