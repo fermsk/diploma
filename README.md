@@ -148,15 +148,11 @@ _________
         ng-75967b7d86-p4qkj   1/1     Running   0          65m   10.244.2.2   work-node2   <none>           <none>
         ng-75967b7d86-zg58m   1/1     Running   0          65m   10.244.1.2   work-node1   <none>           <none>
 
-* Для доступа к приложению "снаружи" используется тип сервиса LoadBalancer — стандартный способ предоставления сервиса в интернет.
-* Описание объекта Kubernetes - https://github.com/fermsk/diploma/blob/main/app/nginx.yml#L22       
 ```        
 femsk@master-node:~$ kubectl get service -n diploma
 NAME         TYPE           CLUSTER-IP       EXTERNAL-IP     PORT(S)          AGE
 serv-nginx   LoadBalancer   10.101.133.147   158.160.98.13   8080:32387/TCP   66m
 ```
-* Использование Endpoints обусловлено тем, что они обеспечивают связь между различными службами внутри кластера в
-  условиях сложных рабочих процессов. 
 * Сервис доступен снаружи: http://158.160.98.13:32387/
   
         femsk@ubuntu-test-vm:~/diploma/diploma/app$ curl http://158.160.98.13:32387/
@@ -188,31 +184,19 @@ _________
 ```
 femsk@ubuntu-test-vm:~/diploma/diploma/terraform-deprecated$ ansible-playbook --inventory-file=./terraform-inventory ../monitor/deploy.yml
 ```
-Http доступ к web интерфейсу grafana - [Grafana](http://158.160.111.8:30271) (admin admin)
+* Http доступ к web интерфейсу grafana - [Grafana](http://158.160.111.8:30271) (admin admin)
 ![img.png](img.png)
 
 _________
 ## 5. Установка и настройка CI/CD
 * Директория ./cicd
 * Деплой Jenkins в кластер - 
- 
-      ansible-playbook -i ../kube/hosts deploy_j.yml
- 
+``` 
+femsk@ubuntu-test-vm:~/diploma/diploma/terraform-deprecated$ ansible-playbook --inventory-file=./terraform-inventory ../cicd/deploy_j.yml
+``` 
 * Конфигурация монтируется в путь /var/jenkins_home из PVC
-* Интерфейс ci/cd сервиса доступен по http - http://158.160.98.13:32413/ (diploma 1Qazxcvb)
-
-      femsk@master-node:~/kube-prometheus$ kubectl get pods --all-namespaces -owide
-      NAMESPACE      NAME                                   READY   STATUS    RESTARTS   AGE     IP            NODE          NOMINATED NODE   READINESS GATES
-      diploma        jenkins-7855cd94b-8gj9d                1/1     Running   0          63s     10.244.1.11   work-node1    <none>           <none>
-      diploma        jenkins-7855cd94b-xf79q                1/1     Running   0          63s     10.244.2.12   work-node2    <none>           <none>
-      diploma        ng-75967b7d86-p4qkj                    1/1     Running   0          4h35m   10.244.2.2    work-node2    <none>           <none>
-      diploma        ng-75967b7d86-zg58m                    1/1     Running   0          4h35m   10.244.1.2    work-node1    <none>           <none>
-  
-      femsk@master-node:~/kube-prometheus$ kubectl get svc -n diploma
-      NAME             TYPE           CLUSTER-IP       EXTERNAL-IP     PORT(S)          AGE
-      serv-jenk        LoadBalancer   10.111.111.48    158.160.98.13   8081:32413/TCP   83m
-      serv-jenk-jnlp   ClusterIP      10.110.213.184   <none>          50000/TCP        14m
-      serv-nginx       LoadBalancer   10.101.133.147   158.160.98.13   8080:32387/TCP   4h35m
+* Интерфейс ci/cd сервиса доступен по http - [Jenkins](http://158.160.111.8:30000) (diploma 1Qazxcvb)
+* Сервис для доступа к сервису "снаружи" - 
 
 
 ![img_2.png](img_2.png)
