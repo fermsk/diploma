@@ -180,12 +180,12 @@ _________
 ## 4. Подготовка cистемы мониторинга
 * Директория ./monitor
 * Добавлен сабмодуль https://github.com/prometheus-operator/kube-prometheus.git, директория ./kube-prometheus
-* Деплой:
+* Деплой: 
 ```
 femsk@ubuntu-test-vm:~/diploma/diploma/terraform-deprecated$ ansible-playbook --inventory-file=./terraform-inventory ../monitor/deploy.yml
 ```
 * Http доступ к web интерфейсу grafana - [Grafana](http://158.160.111.8:30271) (admin admin)
-![img.png](img.png)
+![img.png](img.png) 
 
 _________
 ## 5. Установка и настройка CI/CD 
