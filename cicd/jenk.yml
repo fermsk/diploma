@@ -34,16 +34,14 @@ kind: Deployment
 metadata:
   name: jenkins
 spec:
-  replicas: 1
-  strategy:
-    type: Recreate
   selector:
     matchLabels:
-      app: jenk-app
+      run: jenk-app
+  replicas: 1
   template:
     metadata:
       labels:
-        app: jenk-app
+        run: jenk-app
     spec:
       containers:
         - name: jenkins
