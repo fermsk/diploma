@@ -11,7 +11,7 @@
         join_command: "{{ join_command_raw.stdout_lines[0] }}"
 
 
-- hosts: worker1,worker2
+- hosts: worker3
   become: yes
   tasks:
     - name: join cluster
