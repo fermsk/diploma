@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: jenkins
-        image: jenkins/jenkins
+        image: femsk/diploma:1.2
         ports:
           - name: http-port
             containerPort: 8080
