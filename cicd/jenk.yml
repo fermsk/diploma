@@ -54,7 +54,7 @@ spec:
         ports:
           - containerPort: 8080
         volumeMounts:
-          - name: jenkins-home
+          - name: pv-jenk
             mountPath: /var/jenkins_home
       volumes:
         - name: pv-jenk
