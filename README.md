@@ -203,11 +203,10 @@ ExecStart=/usr/bin/dockerd -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock 
 ```
 * Настройка Jenkins job - [Jenkins job](http://158.160.111.8:30000/job/diploma1/configure)
 * Настройка  GitHub Webhooks 
-![img_5.png](img_5.png)
+![img_6.png](img_6.png)
 * При любом коммите или создании тэга в репозиторий с тестовым приложением происходит сборка и отправка в регистр Docker образа,
 и деплой приложения.
 * * Сервис типа **NodePort** для доступа "снаружи" - 
-![img_4.png](img_4.png)
 _________
 
 
