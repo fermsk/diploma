@@ -77,7 +77,7 @@ master-node   Ready    control-plane   4m57s   v1.28.1
 ```
 #### 2.2 Добавление воркеров в кластер:
 ```
-femsk@ubuntu-test-vm:~/diploma/diploma/terraform-deprecated$ ansible-playbook --inventory ../kube/workers.yml
+femsk@ubuntu-test-vm:~/diploma/diploma/terraform-deprecated$ ansible-playbook --inventory-file=./terraform-inventory ../kube/workers.yml
 ```
 Открывается ssh-сессия на мастер-ноду, и проверяется состояние кластера:
 ```
@@ -111,71 +111,24 @@ _________
 ## 3. Создание тестового приложения и деплой приложения
 * Директория ./app
 * Приложение создано из базового образа nginx:1.24.0, доработан автоматический запуск nginx, Dockerfile:
-  
-        FROM nginx:1.24.0
-        CMD ["nginx" "-g" "daemon off;"]
-* Сборка Docker образа: 
-
-        docker build -t nginxdip . 
-
-* Назначается tag Docker образу: 
- 
-        docker tag nginxdip femsk/nginx:1.0
-
-* Docker образ пушится: 
-
-         docker push femsk/nginx:1.0
-
-* Образ nginx - femsk/nginx:1.0
-* Деплой приложение в кластер:
-
-        femsk@ubuntu-test-vm:~/diploma/diploma/app$ ansible-playbook -i ../kube/hosts deploy.yml
-      
-        PLAY [master] ******************************************************************************************************************************************************************************
-      
-        TASK [Copying yaml] ************************************************************************************************************************************************************************
-        changed: [master]
-      
-        TASK [Deployment] **************************************************************************************************************************************************************************
-        changed: [master]
-      
-        PLAY RECAP *********************************************************************************************************************************************************************************
-        master                     : ok=2    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
-        
-
-        femsk@master-node:~$ kubectl get pods -n diploma -owide
-        NAME                  READY   STATUS    RESTARTS   AGE   IP           NODE         NOMINATED NODE   READINESS GATES
-        ng-75967b7d86-p4qkj   1/1     Running   0          65m   10.244.2.2   work-node2   <none>           <none>
-        ng-75967b7d86-zg58m   1/1     Running   0          65m   10.244.1.2   work-node1   <none>           <none>
-
-```        
-femsk@master-node:~$ kubectl get service -n diploma
-NAME         TYPE           CLUSTER-IP       EXTERNAL-IP     PORT(S)          AGE
-serv-nginx   LoadBalancer   10.101.133.147   158.160.98.13   8080:32387/TCP   66m
+```  
+FROM nginx:1.24.0
+CMD ["nginx" "-g" "daemon off;"]
 ```
-* Сервис доступен снаружи: http://158.160.98.13:32387/
-  
-        femsk@ubuntu-test-vm:~/diploma/diploma/app$ curl http://158.160.98.13:32387/
-        <!DOCTYPE html>
-        <html>
-        <head>
-        <title>Welcome to nginx!</title>
-        <style>
-        html { color-scheme: light dark; }
-        body { width: 35em; margin: 0 auto;
-        font-family: Tahoma, Verdana, Arial, sans-serif; }
-        </style>
-        </head>
-        <body>
-        <h1>HI!</h1>
-        <p>Here is a page of a test application that emulates the main application developed by our company. .</p>
-        
-      <p>The diploma project materials are located at:
-      <a href="https://github.com/fermsk/diploma">github.com</a>.<br/>
-        
-      <p><em>Thanks!.</em></p>
-      </body>
-      </html>
+* Сборка Docker образа: 
+```
+docker build -t nginxdip . 
+```
+* Назначается tag Docker образу: 
+``` 
+docker tag nginxdip femsk/nginx:1.0
+```
+* Docker образ пушится: 
+```
+docker push femsk/nginx:1.0
+```
+* Образ nginx - femsk/nginx:1.0
+* Деплой приложения в кластер производится в Jenkins.
 _________
 ## 4. Подготовка cистемы мониторинга  
 * Директория ./monitor 
@@ -206,7 +159,10 @@ ExecStart=/usr/bin/dockerd -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock 
 ![img_6.png](img_6.png)
 * При любом коммите или создании тэга в репозиторий с тестовым приложением происходит сборка и отправка в регистр Docker образа,
 и деплой приложения.
-* * Сервис типа **NodePort** для доступа "снаружи" - 
+* Сервис типа **NodePort** для доступа "снаружи" - 
+
+
+
 _________
 
 
