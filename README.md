@@ -157,6 +157,7 @@ femsk@ubuntu-test-vm:~/diploma/diploma/terraform-deprecated$ ansible-playbook --
 #ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
 ExecStart=/usr/bin/dockerd -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock -H fd:// --containerd=/run/containerd/containerd.sock
 ```
+![img_8.png](img_8.png)
 * Настройка Jenkins job - [Jenkins job](http://158.160.111.8:30000/job/diploma1/configure)
 * Настройка  GitHub Webhooks 
 ![img_6.png](img_6.png)
