@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: femsk/nginx:1.0.${BUILD_NUMBER}
+        image: femsk/nginx:latest
 ---
 apiVersion: v1
 kind: Service
