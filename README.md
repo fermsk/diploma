@@ -163,6 +163,7 @@ ExecStart=/usr/bin/dockerd -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock 
 ![img_6.png](img_6.png)
 * При любом коммите или создании тэга в репозиторий с тестовым приложением происходит сборка и отправка в регистр Docker образа,
 и деплой приложения.
+
 ![img_7.png](img_7.png)
 * Сервис приложения типа **NodePort** для доступа "снаружи" - [Nginx service](https://github.com/fermsk/diploma/blob/main/app/nginx.yml#L20)
 * Сервис приложения доступен по адресу - [Nginx app](http://158.160.111.8:30001/)
