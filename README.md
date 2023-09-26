@@ -194,21 +194,19 @@ _________
 ``` 
 femsk@ubuntu-test-vm:~/diploma/diploma/terraform-deprecated$ ansible-playbook --inventory-file=./terraform-inventory ../cicd/deploy_j.yml
 ``` 
-* Конфигурация монтируется в путь /var/jenkins_home из PVC
 * Интерфейс ci/cd сервиса доступен по http - [Jenkins](http://158.160.111.8:30000) (diploma 1Qazxcvb)
-* Сервис для доступа к сервису "снаружи" - [Jenkins Service](https://github.com/fermsk/diploma/blob/main/cicd/jenk.yml#L31)
-
-
-![img_2.png](img_2.png)
-
+* Сервис типа **NodePort** для доступа "снаружи" - [Jenkins Service](https://github.com/fermsk/diploma/blob/main/cicd/jenk.yml#L31)
 * Настройка Cloud Docker в jenkins, изменения в настройки докера в systemd на master-node:
-
-      #ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
-      ExecStart=/usr/bin/dockerd -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock -H fd:// --containerd=/run/containerd/containerd.sock
-* Настройка Jenkins job - http://158.160.98.13:32413/job/diploma/configure
+```
+#ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+ExecStart=/usr/bin/dockerd -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock -H fd:// --containerd=/run/containerd/containerd.sock
+```
+* Настройка Jenkins job - [Jenkins job](http://158.160.111.8:30000/job/diploma1/configure)
 * Настройка  GitHub Webhooks 
 ![img_5.png](img_5.png)
-* При любом коммите в репозиторий с тестовым приложением происходит сборка и отправка в регистр Docker образа.
+* При любом коммите или создании тэга в репозиторий с тестовым приложением происходит сборка и отправка в регистр Docker образа,
+и деплой приложения.
+* * Сервис типа **NodePort** для доступа "снаружи" - 
 ![img_4.png](img_4.png)
 _________
 
