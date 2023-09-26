@@ -139,6 +139,7 @@ _________
 ```
 femsk@ubuntu-test-vm:~/diploma/diploma/terraform-deprecated$ ansible-playbook --inventory-file=./terraform-inventory ../monitor/deploy.yml
 ```
+* Доработан сервис Grafana для доступа "снаружи" - ./monitor/grafana-service.yaml
 * Http доступ к web интерфейсу grafana - [Grafana](http://158.160.111.8:30271) (admin admin)
 ![img.png](img.png) 
 
@@ -162,7 +163,7 @@ ExecStart=/usr/bin/dockerd -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock 
 * При любом коммите или создании тэга в репозиторий с тестовым приложением происходит сборка и отправка в регистр Docker образа,
 и деплой приложения.
 ![img_7.png](img_7.png)
-* Сервис типа **NodePort** для доступа "снаружи" - https://github.com/fermsk/diploma/blob/main/app/nginx.yml#L20
+* Сервис приложения типа **NodePort** для доступа "снаружи" - [Nginx service](https://github.com/fermsk/diploma/blob/main/app/nginx.yml#L20)
 * Сервис приложения доступен по адресу - [Nginx app](http://158.160.111.8:30001/)
 _________
 
