@@ -134,14 +134,14 @@ docker push femsk/nginx:1.0
 _________
 ## 4. Подготовка cистемы мониторинга  
 * Директория ./monitor 
-* Добавлен сабмодуль https://github.com/prometheus-operator/kube-prometheus.git, директория ./kube-prometheus
+* Добавлен сабмодуль-  [Prometheus operator](https://github.com/prometheus-operator/kube-prometheus.git), директория ./kube-prometheus
 * Деплой: 
 ```
 femsk@ubuntu-test-vm:~/diploma/diploma/terraform-deprecated$ ansible-playbook --inventory-file=./terraform-inventory ../monitor/deploy.yml
 ```
 * Доработан сервис Grafana для доступа "снаружи" - ./monitor/grafana-service.yaml
 * Http доступ к web интерфейсу grafana - [Grafana](http://158.160.111.8:30271) (admin admin)
-![img.png](img.png) 
+![img_9.png](img_9.png)
 
 _________
 ## 5. Установка и настройка CI/CD 
@@ -159,7 +159,7 @@ ExecStart=/usr/bin/dockerd -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock 
 ```
 ![img_8.png](img_8.png)
 * Настройка Jenkins job - [Jenkins job](http://158.160.111.8:30000/job/diploma1/configure)
-* Настройка  GitHub Webhooks 
+* Настройка  GitHub Webhooks  
 ![img_6.png](img_6.png)
 * При любом коммите или создании тэга в репозиторий с тестовым приложением происходит сборка и отправка в регистр Docker образа,
 и деплой приложения.
