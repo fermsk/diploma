@@ -1,51 +1,35 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ng
+  name: nginx
+  namespace: diploma
 spec:
   replicas: 1
-  strategy:
-    type: Recreate
   selector:
     matchLabels:
-      app: ng-app
+      app: nginx
   template:
     metadata:
       labels:
-        app: ng-app
+        app: nginx
     spec:
       containers:
-        - name: nginx
-          image: femsk/nginx:1.0.${BUILD_NUMBER}
-
+      - name: nginx
+        image: femsk/nginx:1.0.${BUILD_NUMBER}
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: serv-nginx
-  namespace: diploma
-  labels:
-      app: ng-app
+  name: nginx
 spec:
-  type: LoadBalancer
-#  selector:
-#    run: ng-app
+  type: NodePort
   ports:
-    - protocol: TCP
-      port: 8080
+    - port: 80
       targetPort: 80
+      nodePort: 30001
+  selector:
+    app: nginx
   externalIPs:
-      - 158.160.98.13
+    - 158.160.111.8
 
----
-kind: Endpoints
-apiVersion: v1
-metadata:
-  name: serv-nginx
-subsets:
-  - addresses:
-      - ip: 10.244.2.2
-      - ip: 10.244.1.2
-    ports:
-      - port: 80
 
